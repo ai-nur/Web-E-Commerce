@@ -1,0 +1,33 @@
+.container {
+  margin: 40px 64px;
+  .swiper {
+    .swiper-button-prev {
+      left: 170px !important;
+      // opacity: 0;
+      // &:hover {
+      //   opacity: 1;
+      // }
+    }
+    .swiper-button-next {
+      right: 170px !important;
+      // opacity: 0;
+      // &:hover {
+      //   opacity: 1;
+      // }
+    }
+    .swiper-wrapper {
+      .swiper-slide {
+        width: auto !important;
+        margin: 0 10px;
+        opacity: 0.4;
+        img {
+          border-radius: 15px;
+          width: 900px;
+        }
+      }
+      .swiper-slide-active {
+        opacity: 1 !important;
+      }
+    }
+  }
+}

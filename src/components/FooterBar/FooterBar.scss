@@ -1,0 +1,95 @@
+$infoMain: #0023dd;
+$infoHover: #001db8;
+
+.footer-bar {
+  position: static;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  .MuiContainer-root {
+    max-width: 100%;
+    background-color: #ffec80;
+    margin: 0;
+    padding: 0;
+    .MuiGrid-container {
+      width: 100%;
+      margin: 0;
+      padding: 24px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      .MuiGrid-item {
+        padding: 0 15px;
+        .css-vcv939 {
+          font-size: 16px;
+          font-weight: 700;
+          margin-bottom: 25px;
+          border: none;
+        }
+        .css-0 {
+          margin-top: 5px;
+          .MuiLink-root {
+            opacity: 0.9;
+            font-size: 14px;
+            text-decoration: none;
+            &:hover {
+              opacity: 1;
+            }
+          }
+          .MuiPaper-root {
+            padding: 0;
+            background-color: transparent;
+            box-shadow: none;
+            // height: 34.5px;
+            align-items: center;
+            .MuiInputBase-root {
+              height: 34.5px;
+              background-color: #FFF;
+              border-radius: 10px;
+              border: 1px solid black;
+              padding: 0 10px;
+              width: 330px;
+              margin: 0;
+              font-size: 14px;
+            }
+            .MuiButton-root {
+              background-color: $infoMain;
+              color: #fff;
+              border-radius: 10px;
+              margin: 0 10px;
+              text-transform: initial;
+              padding: 5px 10px;
+              &:hover {
+                background-color: $infoHover;
+              }
+            }
+          }
+          .MuiLink-root {
+            .MuiIconButton-root {
+              padding: 0 10px;
+              .MuiSvgIcon-root {
+                color: rgba($color: #000000, $alpha: 0.7);
+                &:hover {
+                  color: black;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .Copyright {
+      width: 100%;
+      height: 40px;
+      background-color: #FEE967;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      p {
+        margin: 0;
+        font-size: 12px;
+        font-weight: 700;
+      }
+    }
+  }
+}
