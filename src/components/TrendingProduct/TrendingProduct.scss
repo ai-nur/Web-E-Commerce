@@ -1,0 +1,83 @@
+.container-trending {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 15px;
+  margin: 40px 64px;
+  padding: 30px;
+  .header-trending {
+    text-align: center;
+    h1 {
+      margin: 0;
+    }
+  }
+  .category {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .MuiButton-root {
+      width: 120px;
+      height: 42px;
+      margin: 10px;
+      color: gray;
+      &:hover {
+        color: blue;
+        background-color: transparent;
+        font-size: 15px;
+        font-weight: 500;
+        text-decoration-line: underline;
+        text-decoration-thickness: 2px;
+      }
+      &:active {
+        color: blue;
+        background-color: transparent;
+        font-size: 15px;
+        font-weight: 500;
+        text-decoration-line: underline;
+        text-decoration-thickness: 2px;
+      }
+    }
+  }
+  .content-trending {
+    // margin: 10px 0;
+    .MuiGrid-container {
+      //   justify-content: center;
+      .MuiGrid-item {
+          padding: 20px;
+        .MuiCard-root {
+          width: 100%;
+          .MuiCardActionArea-root {
+            .MuiCardMedia-root {
+              display: flex;
+              justify-content: center;
+              img {
+                height: 250px;
+              }
+            }
+          }
+          .MuiCardContent-root {
+            width: auto;
+            margin: 0 20px;
+            padding: 6px 0;
+            color: rgb(36, 36, 36);
+            .product-name {
+              font-size: 14px;
+              margin: 0;
+            }
+            .product-price {
+              font-size: 16px;
+              font-weight: 700;
+              margin: 5px 0;
+            }
+          }
+          .MuiCardActions-root {
+              .MuiButton-root {
+                  width: 100%;
+              }
+          }
+        }
+      }
+    }
+  }
+}

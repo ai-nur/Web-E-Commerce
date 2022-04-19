@@ -77,14 +77,16 @@ const HeaderBar = () => {
                     <Button
                       disableRipple
                       // onClick={handleCloseNavMenu}
-                      {...bindHover(popupState)}
+                      // {...bindHover(popupState)}
+                      onMouseEnter={popupState.open}
+                      // onMouseLeave={popupState.close}
                       sx={{ my: 2, color: "white", display: "block" }}
                     >
                       <Typography>{page}</Typography>
                     </Button>
                     <Popover
                       {...bindPopover(popupState)}
-                      onMouseLeave={popupState.close}
+                      // onMouseLeave={popupState.close}
                     >
                       <Typography>The content of the Popover.</Typography>
                     </Popover>

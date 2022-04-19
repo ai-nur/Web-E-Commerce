@@ -1,9 +1,29 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
-import { LogoUT } from "../../assets";
+import {
+  LogoUT,
+  migelas,
+  sarimi,
+  asahi,
+  maya,
+  kikkoman,
+  kongbap,
+  energen,
+  madu,
+  sania,
+  tropical,
+} from "../../assets";
 
-import { Card, CardMedia, CardContent, CardActionArea } from "@mui/material";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+} from "@mui/material";
+import { Link } from "react-router-dom";
 
 import "swiper/scss";
 import "swiper/scss/navigation";
@@ -16,43 +36,64 @@ const FeaturedProduct = () => {
   const slides = [
     {
       id: 1,
-      imageURL: LogoUT,
+      imageURL: migelas,
+      name: "Migelas",
+      price: "10.000",
+      stock: "99",
+      discount: "15%",
     },
     {
       id: 2,
-      imageURL: LogoUT,
+      imageURL: sarimi,
+      name: "Mie Instan Sarimi",
+      price: "10.000",
+      stock: "99",
+      discount: "15%",
     },
     {
       id: 3,
-      imageURL: LogoUT,
+      imageURL: asahi,
+      name: "Sarden Asahi",
+      price: "10.000",
+      stock: "99",
+      discount: "15%",
     },
     {
       id: 4,
-      imageURL: LogoUT,
+      imageURL: maya,
+      name: "Sarden maya",
+      price: "10.000",
+      stock: "99",
+      discount: "15%",
     },
     {
       id: 5,
-      imageURL: LogoUT,
+      imageURL: kikkoman,
+      name: "Saus Bulgogi",
+      price: "10.000",
+      stock: "99",
+      discount: "15%",
     },
     {
       id: 6,
-      imageURL: LogoUT,
+      imageURL: kongbap,
+      name: "Korean Food Kongbap",
+      price: "10.000",
+      stock: "99",
+      discount: "15%",
     },
   ];
 
   return (
-    <div className="container">
+    <div className="container-produk-unggulan">
+      <div className="header-produk">
+        <h2>Produk Unggulan</h2>
+      </div>
       <Swiper
         className="box-swiper"
         id="main"
         spaceBetween={15}
-        slidesPerView={5}
-        centeredSlides
-        loop={true}
-        autoplay={{
-          delay: 4000,
-          disableOnInteraction: false,
-        }}
+        slidesPerView={5.5}
         pagination={{
           clickable: true,
         }}
@@ -64,23 +105,31 @@ const FeaturedProduct = () => {
         {slides.map((data: any) => {
           return (
             <SwiperSlide key={data.id}>
-              <Card sx={{ maxWidth: 345 }}>
+              <Card >
                 <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    // height="140"
-                    image={data.imageURL}
-                    alt="green iguana"
-                  />
+                  <CardMedia>
+                    <img src={data.imageURL} alt={`Gambar ${data.id}`} />
+                  </CardMedia>
                   <CardContent>
-                    <p>Teks</p>
+                    <p className="product-name">{data.name}</p>
+                    <p className="product-price">Rp {data.price}</p>
                   </CardContent>
                 </CardActionArea>
+                <CardActions>
+                  <Button variant="contained" disableRipple>
+                    Beli
+                  </Button>
+                </CardActions>
               </Card>
             </SwiperSlide>
           );
         })}
       </Swiper>
+      <div className="footer-produk">
+        <Link className="Link" to="/">
+          Lihat Selengkapnya
+        </Link>
+      </div>
     </div>
   );
 };

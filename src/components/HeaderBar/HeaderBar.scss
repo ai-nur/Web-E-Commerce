@@ -7,6 +7,10 @@ body {
   background-color: #f8f8f8;
 }
 
+button {
+  text-transform: none!important;
+}
+
 .MuiBox-root {
   .MuiPaper-root {
     background-color: $primaryColor;
