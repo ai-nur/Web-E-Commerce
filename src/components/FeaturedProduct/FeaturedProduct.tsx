@@ -1,58 +1,52 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
-import { LogoUT } from "../../assets";
-
-import { Card, CardMedia, CardContent, CardActionArea } from "@mui/material";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+} from "@mui/material";
+import { Link } from "react-router-dom";
 
 import "swiper/scss";
 import "swiper/scss/navigation";
 import "swiper/scss/pagination";
 import "./FeaturedProduct.scss";
 
+import axios from "axios"
+
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 const FeaturedProduct = () => {
-  const slides = [
-    {
-      id: 1,
-      imageURL: LogoUT,
-    },
-    {
-      id: 2,
-      imageURL: LogoUT,
-    },
-    {
-      id: 3,
-      imageURL: LogoUT,
-    },
-    {
-      id: 4,
-      imageURL: LogoUT,
-    },
-    {
-      id: 5,
-      imageURL: LogoUT,
-    },
-    {
-      id: 6,
-      imageURL: LogoUT,
-    },
-  ];
+  const [produk, setProduk] = React.useState([])
+
+  useEffect(() => {
+    axios.get(`http://192.168.43.107:3003/api/products`)
+    .then(res => {
+      setProduk(res.data);
+    })
+  },[])
+
+  console.log(produk)
+
+  const handleClick = () => {
+    console.log("click beli")
+    window.location.href = "/detail"
+  }
 
   return (
-    <div className="container">
+    <div className="container-produk-unggulan">
+      <div className="header-produk">
+        <h2>Produk Unggulan</h2>
+      </div>
       <Swiper
         className="box-swiper"
         id="main"
         spaceBetween={15}
-        slidesPerView={5}
-        centeredSlides
-        loop={true}
-        autoplay={{
-          delay: 4000,
-          disableOnInteraction: false,
-        }}
+        slidesPerView={5.5}
         pagination={{
           clickable: true,
         }}
@@ -61,26 +55,34 @@ const FeaturedProduct = () => {
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper: any) => console.log(swiper)}
       >
-        {slides.map((data: any) => {
+        {produk.map((data: any) => {
           return (
-            <SwiperSlide key={data.id}>
-              <Card sx={{ maxWidth: 345 }}>
+            <SwiperSlide key={data.productID}>
+              <Card >
                 <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    // height="140"
-                    image={data.imageURL}
-                    alt="green iguana"
-                  />
+                  <CardMedia>
+                    <img src={data.productImage} alt={`Gambar ${data.productID}`} />
+                  </CardMedia>
                   <CardContent>
-                    <p>Teks</p>
+                    <p className="product-name">{data.productName}</p>
+                    <p className="product-price">Rp {data.productPrice}</p>
                   </CardContent>
                 </CardActionArea>
+                <CardActions>
+                  <Button variant="contained" disableRipple onClick={()=> {handleClick()}}>
+                    Beli
+                  </Button>
+                </CardActions>
               </Card>
             </SwiperSlide>
           );
         })}
       </Swiper>
+      <div className="footer-produk">
+        <Link className="Link" to="/">
+          Lihat Selengkapnya
+        </Link>
+      </div>
     </div>
   );
 };

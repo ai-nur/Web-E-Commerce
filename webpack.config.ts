@@ -67,6 +67,8 @@ const config: webpack.Configuration = {
     },
     compress: true,
     hot: true,
+    // inline: true,
+    historyApiFallback: true,
     port: 9000,
   },
   plugins: [

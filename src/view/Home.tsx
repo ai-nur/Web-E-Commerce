@@ -4,6 +4,7 @@ import {
   BannerSlide,
   FooterBar,
   FeaturedProduct,
+  TrendingProduct
 } from "../components";
 
 const Home = () => {
@@ -11,7 +12,8 @@ const Home = () => {
     <>
       <HeaderBar />
       <BannerSlide />
-      {/* <FeaturedProduct /> */}
+      <FeaturedProduct />
+      <TrendingProduct />
       <FooterBar />
     </>
   );

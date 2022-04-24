@@ -10,7 +10,6 @@ import {
   Fade,
   IconButton,
   InputBase,
-  Modal,
   Paper,
   Popover,
   Popper,
@@ -51,7 +50,7 @@ const HeaderBar = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <Link className="Home-Link" to="/banner">
+          <Link className="Home-Link" to="/detail">
             <img
               src={LogoUT}
               alt="Logo UT"
@@ -77,14 +76,16 @@ const HeaderBar = () => {
                     <Button
                       disableRipple
                       // onClick={handleCloseNavMenu}
-                      {...bindHover(popupState)}
+                      // {...bindHover(popupState)}
+                      onMouseEnter={popupState.open}
+                      // onMouseLeave={popupState.close}
                       sx={{ my: 2, color: "white", display: "block" }}
                     >
                       <Typography>{page}</Typography>
                     </Button>
                     <Popover
                       {...bindPopover(popupState)}
-                      onMouseLeave={popupState.close}
+                      // onMouseLeave={popupState.close}
                     >
                       <Typography>The content of the Popover.</Typography>
                     </Popover>

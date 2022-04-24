@@ -7,12 +7,17 @@ body {
   background-color: #f8f8f8;
 }
 
+button {
+  text-transform: none!important;
+}
+
 .MuiBox-root {
   .MuiPaper-root {
     background-color: $primaryColor;
     color: black;
     .MuiToolbar-root {
-      margin: 0 40px;
+      margin: 0 auto;
+      width: 1221px;
       .Home-Link {
         display: flex;
         flex-direction: row;
@@ -103,6 +108,7 @@ body {
     max-width: 100% !important;
     max-height: 100% !important;
     margin-top: 80px;
-    background-color: aquamarine;
+    background-color: #EDEDED;
+    opacity: 0.7;
   }
 }

@@ -63,7 +63,7 @@ const BannerSlide = () => {
         }}
         navigation={true}
         modules={[Pagination, Navigation]}
-        onSlideChange={() => console.log("slide change")}
+        // onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper: any) => console.log(swiper)}
       >
         {slides.map((data: any) => {
