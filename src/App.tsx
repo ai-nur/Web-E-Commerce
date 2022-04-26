@@ -1,14 +1,14 @@
 import React from "react";
-import { Home, Detail } from "./view"
-import { Routes, Route } from "react-router-dom";
-import { FeaturedProduct } from "./components";
+import { Home, Detail } from "./view";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/detail" element={<Detail />} />
-    </Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/detail" element={<Detail />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
-

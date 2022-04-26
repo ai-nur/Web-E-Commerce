@@ -16,21 +16,35 @@ import "swiper/scss/navigation";
 import "swiper/scss/pagination";
 import "./FeaturedProduct.scss";
 
+import { useAppState } from "../../contexts/AppState";
+import { getProduct } from "../../actions/ProductAction";
+
 import axios from "axios"
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 const FeaturedProduct = () => {
-  const [produk, setProduk] = React.useState([])
+  const [ state, dispatch ] = useAppState();
+  const { getProductResult, getProductLoading, getProductError } = state;
 
   useEffect(() => {
-    axios.get(`http://192.168.43.107:3003/api/products`)
-    .then(res => {
-      setProduk(res.data);
-    })
-  },[])
+    getProduct(dispatch);
+  }, [dispatch])
 
-  console.log(produk)
+  console.log(state)
+  console.log(getProductResult)
+
+
+  // const [produk, setProduk] = React.useState([])
+
+  // useEffect(() => {
+  //   axios.get(`http://192.168.43.107:3003/api/products`)
+  //   .then(res => {
+  //     setProduk(res.data);
+  //   })
+  // },[])
+
+  // console.log(produk)
 
   const handleClick = () => {
     console.log("click beli")
@@ -55,28 +69,34 @@ const FeaturedProduct = () => {
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper: any) => console.log(swiper)}
       >
-        {produk.map((data: any) => {
-          return (
-            <SwiperSlide key={data.productID}>
-              <Card >
-                <CardActionArea>
-                  <CardMedia>
-                    <img src={data.productImage} alt={`Gambar ${data.productID}`} />
-                  </CardMedia>
-                  <CardContent>
-                    <p className="product-name">{data.productName}</p>
-                    <p className="product-price">Rp {data.productPrice}</p>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions>
-                  <Button variant="contained" disableRipple onClick={()=> {handleClick()}}>
-                    Beli
-                  </Button>
-                </CardActions>
-              </Card>
-            </SwiperSlide>
-          );
-        })}
+        {getProductResult ? (
+          getProductResult.map((data: any) => {
+            return (
+              <SwiperSlide key={data.productID}>
+                <Card >
+                  <CardActionArea>
+                    <CardMedia>
+                      <img src={data.productImage} alt={`Gambar ${data.productID}`} />
+                    </CardMedia>
+                    <CardContent>
+                      <p className="product-name">{data.productName}</p>
+                      <p className="product-price">Rp {data.productPrice}</p>
+                    </CardContent>
+                  </CardActionArea>
+                  <CardActions>
+                    <Button variant="contained" disableRipple onClick={()=> {handleClick()}}>
+                      Beli
+                    </Button>
+                  </CardActions>
+                </Card>
+              </SwiperSlide>
+            );
+          })
+        ) : getProductLoading ? (
+          <p>loading . . .</p>
+        ) : (
+          <p>{getProductError ? getProductError : "Data Kosong." }</p>
+        )}
       </Swiper>
       <div className="footer-produk">
         <Link className="Link" to="/">

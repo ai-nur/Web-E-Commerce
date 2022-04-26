@@ -1,7 +1,6 @@
 import * as path from "path";
 import * as webpack from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-// in case you run into any typescript error when configuring `devServer`
 import "webpack-dev-server";
 
 const config: webpack.Configuration = {
@@ -12,13 +11,12 @@ const config: webpack.Configuration = {
     filename: "bundle.js",
   },
   resolve: {
-    // Add `.ts` and `.tsx` as a resolvable extension.
-    extensions: [".ts", ".tsx", ".json", ".js", ".jsx"]
+    extensions: [".ts", ".tsx", ".json", ".js", ".jsx"],
   },
   module: {
     rules: [
-      { 
-        test: /\.ts|tsx?$/, 
+      {
+        test: /\.ts|tsx?$/,
         loader: "ts-loader",
         exclude: /node_modules/,
       },
@@ -30,32 +28,20 @@ const config: webpack.Configuration = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [
-          // Creates `style` nodes from JS strings
-          "style-loader",
-          // Translates CSS into CommonJS
-          "css-loader",
-          // Compiles Sass to CSS
-          "sass-loader",
-        ],
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
-          test: /\.css$/i,
-          use: [
-            // Creates `style` nodes from JS strings
-            "style-loader",
-            // Translates CSS into CommonJS
-            "css-loader",
-          ],
-        },
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
-              name: "src/assets/images/[name].[ext]"
-            }
+              name: "src/assets/images/[name].[ext]",
+            },
           },
         ],
       },
@@ -63,7 +49,7 @@ const config: webpack.Configuration = {
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist'),
+      directory: path.join(__dirname, "dist"),
     },
     compress: true,
     hot: true,
@@ -73,10 +59,10 @@ const config: webpack.Configuration = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-        filename: "index.html",
-        template: "src/index.html",
-    })
-  ]
+      filename: "index.html",
+      template: "src/index.html",
+    }),
+  ],
 };
 
 export default config;
